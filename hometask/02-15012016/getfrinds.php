@@ -6,8 +6,16 @@
  * Time: 14:52
  */
 
-//строка запроса
-//сформировать url
-//открыть адрес
-//распарсить json
-//вывести массив
+$getFriends = [
+    'user_id' => '547430',
+    'order' => 'name',
+    'fields' => 'bdate,photo_50,education,has_mobile',
+    'name_case' => 'ins',
+];
+
+$askForFriends = "https://api.vk.com/method/friends.get?" . http_build_query($getFriends);
+$getJsonFriends = file_get_contents($askForFriends);
+$getRealFriends = json_decode($getJsonFriends, true);
+$friends = $getRealFriends['response'];
+var_dump($friends);
+
