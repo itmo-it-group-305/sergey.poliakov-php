@@ -13,9 +13,11 @@ $getFriends = [
     'name_case' => 'ins',
 ];
 
-$askForFriends = "https://api.vk.com/method/friends.get?" . http_build_query($getFriends);
+$askForFriends = "http://api.vk.com/method/friends.get?" . http_build_query($getFriends);
 $getJsonFriends = file_get_contents($askForFriends);
 $getRealFriends = json_decode($getJsonFriends, true);
 $friends = $getRealFriends['response'];
 var_dump($friends);
+
+phpinfo();
 
